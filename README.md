@@ -9,8 +9,10 @@ This project is an async product crawler built with Python, asyncio and aiohttp.
 - Supporting resume crawling from the last product instead of restarting from the beginning.
 - Using Docker multi-worker architecture to improve crawling performance by parallelizing workloads
 
-The diagram above illustrates the full processes: \
-![Diagram](<img width="552" height="821" alt="Biểu đồ không có tiêu đề drawio" src="https://github.com/user-attachments/assets/eed32581-48a6-48d5-9900-3ad0686bc87f" />)
+The diagram above illustrates the full processes: 
+<p align="center">
+  <img src="assets/images/async_crawler_workflow.png" alt="Async Crawled Workflow Diagram">
+</p>
 
 ## Input data
 - Resource file: \
