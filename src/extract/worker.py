@@ -1,6 +1,6 @@
-from src.crawlers.fetcher import fetch_product
+from src.extract.fetcher import fetch_product
 
-def shard_product_ids(product_ids, worker_id, total_workers):
+def share_product_ids(product_ids, worker_id, total_workers):
     return [
         pid
         for i, pid in enumerate(product_ids)

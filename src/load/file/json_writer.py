@@ -1,8 +1,11 @@
-from src.writer.checkpoint import save_checkpoint
-from src.utils.constants import OUTPUT_DIR, BATCH_SIZE
+from src.load.file.checkpoint import save_checkpoint
+from config.runtime import BATCH_SIZE
+from config.paths import OUTPUT_DIR
 import json
 
 async def writer(result_queue, checkpoint):
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
     file_index = checkpoint["file_index"]
     item_count = checkpoint["item_count"]
     f = None

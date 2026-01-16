@@ -1,9 +1,10 @@
 import asyncio
-from src.utils.constants import API_URL, HEADERS, RETRY
-from src.utils.normalize import normalize_description
-from src.utils.logger import get_logger
+from src.utils.constants import API_URL, HEADERS
+from config.runtime import RETRY
+from src.transform.normalize_prod_desc import normalize_description
+import logging
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 async def fetch_product(session, product_id):
     url = API_URL.format(product_id)

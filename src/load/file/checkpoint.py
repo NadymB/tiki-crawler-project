@@ -1,7 +1,9 @@
-from src.utils.constants import CHECKPOINT_FILE
+from config.paths import CHECKPOINT_FILE, CHECKPOINT_DIR
 import json
 
 def load_checkpoint():
+    CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
+
     if CHECKPOINT_FILE.exists():
         return json.loads(CHECKPOINT_FILE.read_text())
     return {
@@ -11,11 +13,8 @@ def load_checkpoint():
     }
 
 def save_checkpoint(product_id, file_index, item_count):
-    # CHECKPOINT_FILE.write_text(json.dumps({
-    #     "last_product_id": product_id,
-    #     "file_index": file_index,
-    #     "item_count": item_count
-    # }, ensure_ascii=False, indent=2))
+    CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
+    
     data = {
         "last_product_id": product_id,
         "file_index": file_index,

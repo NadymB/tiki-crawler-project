@@ -1,11 +1,12 @@
-from src.utils.constants import CONCURRENT, TIMEOUT
-from src.crawlers.worker import worker
-from src.writer.json_writer import writer
-from src.utils.logger import get_logger
+from config.runtime import CONCURRENT, TIMEOUT
+from src.extract.worker import worker
+from src.load.file.json_writer import writer
+import logging
 import asyncio
 import aiohttp
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
+
 async def run(product_ids, checkpoint):
     logger.info(f"Starting {len(product_ids)} product(s)")
     queue = asyncio.Queue()

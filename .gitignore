@@ -13,8 +13,11 @@ __pycache__/
 *.py[cod]
 
 # Env
-.env
+.env*
 venv/
 
 # Data
 data/
+
+#Log
+log/

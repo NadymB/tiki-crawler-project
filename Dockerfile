@@ -1,22 +1,15 @@
-# 1. Base light image
-FROM python:3.11-slim
+FROM apache/airflow:2.5.1
 
-# 2. Not create pyc, log to stdout
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+USER root
+RUN apt-get update && apt-get install -y postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
 
-# 3. Folder working into container
-WORKDIR /app
+USER airflow
+COPY requirements.txt /
+RUN pip install --no-cache-dir -r /requirements.txt
 
-# 4. Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 5. Copy source code
-COPY . .
-
-# 6. Create folder data (mount volume later)
-RUN mkdir -p data/checkpoint data/output
-
-# 7. Run app
-CMD ["python", "main.py"]
+COPY airflow/dags/ /opt/airflow/dags/
+COPY src/ /opt/airflow/src/
+COPY etl/ /opt/airflow/etl/
+COPY resources/ /opt/airflow/resources/
+COPY config/ /opt/airflow/config/

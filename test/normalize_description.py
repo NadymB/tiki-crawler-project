@@ -1,4 +1,4 @@
-from src.utils.normalize import normalize_description
+from src.transform.normalize_prod_desc import normalize_description
 
 def test_normalize_description_basic():
     text = "<p>Hello&nbsp;World</p>"
