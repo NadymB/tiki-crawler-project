@@ -14,7 +14,7 @@ This project is an async product crawler built with Python, asyncio and aiohttp.
 
 The diagram above illustrates the full processes: 
 <p align="center">
-  <img src="assets/images/async_crawler_workflow.png" alt="Async Crawled Workflow Diagram">
+  <img src="assets/images/async_crawler_workflow.svg" alt="Async Crawled Workflow Diagram">
 </p>
 
 ## Input data
